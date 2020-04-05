@@ -6,7 +6,7 @@ export function getProvinsi() {
         dispatch(setLoading("SET_LOADING_TRUE"))
         const options = {
             method: 'GET',
-            url: 'http://localhost:3000/api/provinsi',
+            url: `${window.location.origin}/api/provinsi`,
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
