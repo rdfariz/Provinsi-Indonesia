@@ -1,7 +1,9 @@
 import fetch from '../../../utils/fetch'
+import * as actions from '../../../config/action'
 
 export function getProvinsi() {
     return dispatch => {
+        dispatch(setLoading("SET_LOADING_TRUE"))
         const options = {
             method: 'GET',
             url: 'http://localhost:3000/api/provinsi',
@@ -12,18 +14,23 @@ export function getProvinsi() {
         }
         return fetch(options)
         .then(res=>{
-            const provinsi = res.semuaprovinsi
-            dispatch(setProvinsi("GET_PROVINSI_SUCCESS", provinsi))
+            dispatch(setProvinsi("GET_PROVINSI_SUCCESS", res))
         }).catch(err=>{
             dispatch(setProvinsi("GET_PROVINSI_FAILED", err))
+        }).finally(end=>{
+            dispatch(setLoading("SET_LOADING_FALSE"))
         })
     }
 }
 
-function setProvinsi(type, provinsi) {
+function setLoading(type) {
+    return {
+        type
+    } 
+}
+function setProvinsi(type, data) {
     return {
       type,
-      provinsi
+      data
     };
-  }
-  
+}

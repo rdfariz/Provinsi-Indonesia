@@ -6,7 +6,7 @@ import * as actions from './action'
 function mapStateToProps(state){
     return{
         state: {
-            indonesia: state.DAFTARPROVINSI
+            provinsi: state.DAFTARPROVINSI
         }
     }
 }
