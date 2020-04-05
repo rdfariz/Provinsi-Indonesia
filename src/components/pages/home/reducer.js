@@ -1,32 +1,22 @@
 const initialState = {
-    users: []
+    daftarProvinsi: []
 }
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
-        case "TES":
+        case "GET_PROVINSI_SUCCESS":
             return {
                 ...state,
-                users: [
-                    {
-                        id: "Fariz",
-                        text: "TesText",
-                        completed: false
-                    }
-                ]
+                daftarProvinsi: action.provinsi
             }
             break;
-        default:
+        case "GET_PROVINSI_FAILED":
             return {
-                ...state,
-                users: [
-                    {
-                        id: "Fariz",
-                        text: "TesText",
-                        completed: false
-                    }
-                ]
-            }
+                ...state
+            } 
+            break;
+        default:
+            return state
             break;
     }
 }
